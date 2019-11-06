@@ -12,8 +12,8 @@ is provided in HTTP request matches, then the operation is allowed, otherwise th
 In order to authenticate your request, the following HTTP request headers must be included:
 
 * `x-mesh-date` - timestamp of request in format of [RFC 7231](https://tools.ietf.org/html/rfc7231#section-7.1.1.1). Example: `Wed, 06 Nov 2019 21:37:48 GMT`. See [details](###Timestamp).
-* `x-mesh-nonce` - unique identifier of the request that is sent to the API. See [details](###Nonce).
-* `Authorization` - composed of four components: an algorithm declaration (scheme), api key, list of header names that used in signature, and the calculated signature. All those components structured in format that described in the [next section](###constructing-authorization-header).
+* `x-mesh-nonce` - unique identifier of the request that is sent to the API. See [details](#Nonce).
+* `Authorization` - composed of four components: an algorithm declaration (scheme), api key, list of header names that used in signature, and the calculated signature. All those components structured in format that described in the [next section](#constructing-authorization-header).
 
 ### Constructing authorization header
 

@@ -1,11 +1,13 @@
 # Mesh API Authentication
 
-The Mesh API uses [HMAC](https://en.wikipedia.org/wiki/HMAC) Authentication for authenticating requests. 
-Each request made to the API must carry a "signature", which is an output of the HMAC-SHA1 algorithm. 
-The signature created by concatenating selected HTTP headers and using a secret key. 
+The Mesh API uses [HMAC](https://en.wikipedia.org/wiki/HMAC) Authentication for authenticating requests.
+Each request made to the API must carry a "signature", which is an output of the HMAC-SHA1 algorithm.
+The signature created by concatenating selected HTTP headers and using a secret key.
 
 When the API receives the request, it will fetch the secret and perform the same signature calculation. If the signature that
-is provided in HTTP request matches, then the operation is allowed, otherwise the request will be rejected and 401 status code returned. 
+is provided in HTTP request matches, then the operation is allowed, otherwise the request will be rejected and 401 status code returned.
+
+As an opposite to token based authentication, the signature is tied to the HTTP headers with unfixed values, thus makes impossible to reuse (reply) the signature for different requests.
 
 ## Making Request
 
@@ -25,7 +27,7 @@ curl -X GET \
   -H 'Authorization: HMAC-SHA1 ApiKey=${api-key};SignedHeaders=x-mesh-date,x-mesh-nonce;Signature=${generated-signature}'
 ```
 
-Now let's drill down hot to construct `Authorization` header.
+Now let's drill down how to construct `Authorization` header.
 
 ### Constructing authorization header
 
@@ -34,7 +36,7 @@ The signature itself contains all headers in the order they appear in `SignedHea
 
 ### Timestamp
 
-* Because the signature is tied to the time stamp of the request, it can't reuse authorization headers
+* A valid time stamp is mandatory for authenticated requests and must be within 5 minutes of the API system time when the request is received.
 * replay attacks
 * clock scew
 ### Nonce

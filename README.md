@@ -15,6 +15,18 @@ In order to authenticate your request, the following HTTP request headers must b
 * `x-mesh-nonce` - unique identifier of the request that is sent to the API. See [details](#Nonce).
 * `Authorization` - composed of four components: an algorithm declaration (scheme), api key, list of header names that used in signature, and the calculated signature. All those components structured in format that described in the [next section](#constructing-authorization-header).
 
+So the example of such request may look like this:
+
+```bash
+curl -X GET \
+  https://{host}/ping \
+  -H 'x-mesh-date: Wed, 06 Nov 2019 21:37:48 GMT' \
+  -H 'x-mesh-nonce: 4c97634c-6abe-4ef6-a2f7-4891bdcbbfba' \
+  -H 'Authorization: HMAC-SHA1 ApiKey=${api-key};SignedHeaders=x-mesh-date,x-mesh-nonce;Signature=${generated-signature}'
+```
+
+Now let's drill down hot to construct `Authorization` header.
+
 ### Constructing authorization header
 
 has the following format `HMAC-SHA1 ApiKey={api-access-key};SignedHeaders=x-mesh-date,x-mesh-nonce;Signature={base64-encoded-signature}`.
@@ -36,7 +48,6 @@ The signature itself contains all headers in the order they appear in `SignedHea
 This repository contains an example in the following languages:
 
 * [Node.js](./node.js) (JavaScript)
-* [Node.js](./node.ts) (TypeScript)
 * [Postman](./postman)
 * [Python 3+](./python3)
 * [.NET Core](./dotnet) (C#)

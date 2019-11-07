@@ -21,7 +21,7 @@ So the example of such request may look like this:
 
 ```bash
 curl -X GET \
-  https://{host}/ping \
+  https://{host}/status \
   -H 'x-mesh-date: Wed, 06 Nov 2019 21:37:48 GMT' \
   -H 'x-mesh-nonce: 4c97634c-6abe-4ef6-a2f7-4891bdcbbfba' \
   -H 'Authorization: HMAC-SHA256 ApiKey=${api-key};SignedHeaders=x-mesh-date,x-mesh-nonce;Signature=${generated-signature}'

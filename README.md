@@ -1,7 +1,7 @@
 # Mesh API Authentication
 
 The Mesh API uses [HMAC](https://en.wikipedia.org/wiki/HMAC) Authentication for authenticating requests.
-Each request made to the API must carry a "signature", which is an output of the HMAC-SHA1 algorithm.
+Each request made to the API must carry a "signature", which is an output of the HMAC-SHA256 algorithm.
 The signature created by concatenating selected HTTP headers and using a secret key.
 
 When the API receives the request, it will fetch the secret and perform the same signature calculation. If the signature that
@@ -24,14 +24,14 @@ curl -X GET \
   https://{host}/ping \
   -H 'x-mesh-date: Wed, 06 Nov 2019 21:37:48 GMT' \
   -H 'x-mesh-nonce: 4c97634c-6abe-4ef6-a2f7-4891bdcbbfba' \
-  -H 'Authorization: HMAC-SHA1 ApiKey=${api-key};SignedHeaders=x-mesh-date,x-mesh-nonce;Signature=${generated-signature}'
+  -H 'Authorization: HMAC-SHA256 ApiKey=${api-key};SignedHeaders=x-mesh-date,x-mesh-nonce;Signature=${generated-signature}'
 ```
 
 Now let's drill down how to construct `Authorization` header.
 
 ### Constructing authorization header
 
-has the following format `HMAC-SHA1 ApiKey={api-access-key};SignedHeaders=x-mesh-date,x-mesh-nonce;Signature={base64-encoded-signature}`.
+has the following format `HMAC-SHA256 ApiKey={api-access-key};SignedHeaders=x-mesh-date,x-mesh-nonce;Signature={base64-encoded-signature}`.
 The signature itself contains all headers in the order they appear in `SignedHeaders`, each one separated by line terminator `\n` (without line terminator at the very end) and each line is: `{lower_case_header_name}:{header_value}`
 
 ### Timestamp

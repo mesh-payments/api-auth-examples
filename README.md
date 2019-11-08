@@ -22,32 +22,45 @@ So the example of such request may look like this:
 ```bash
 curl -X GET \
   https://{host}/status \
-  -H 'Date: Wed, 06 Nov 2019 21:37:48 GMT' \
-  -H 'x-mesh-nonce: 4c97634c-6abe-4ef6-a2f7-4891bdcbbfba' \
-  -H 'Authorization: HMAC-SHA256 Credential=${api-key};SignedHeaders=Date,x-mesh-nonce;Signature=${generated-signature}'
+  -H 'Date: 2019-11-07T11:37:32.510Z' \
+  -H 'x-mesh-nonce: 4c97634c' \
+  -H 'Authorization: HMAC-SHA256 Credential=${api-key};SignedHeaders=Date,x-mesh-nonce;Signature=${signature}'
 ```
 
 Now let's drill down how to construct `Authorization` header.
 
 ### Constructing authorization header
 
-has the following format `HMAC-SHA256 Credential={api-access-key};SignedHeaders=Date,x-mesh-nonce;Signature={base64-encoded-signature}`.
-The signature itself contains all headers in the order they appear in `SignedHeaders`, each one separated by line terminator `\n` (without line terminator at the very end) and each line is: `{lower_case_header_name}:{header_value}`
+Like already shown above, the header has the following structure:
+```
+HMAC-SHA256 Credential=;SignedHeaders=;Signature=
+```
+
+Similar to many other `Authorization` headers it consist on 2 parts separated by whitespace:
+* `HMAC-SHA256` - scheme, which inidcates the type of authorization and which HASH algorithm used to generate signature. This is a constant value.
+* `Credential=;SignedHeaders=;Signature=` - authorization parameters list, separated by semicolon. Parameters names are case insensitive and all 3 of them are required. 
+  * `Credential` - your *API KEY*
+  * `SignedHeaders` - a list of HTTP request headers names separated by comma, that used to construct the signature. Usually the value will be `Date,x-mesh-nonce`.
+  * `Signature` - base64 encoded SHA256 hash of concatenated headers that appeared in `SignedHeaders` and in the same order. 
+
+So, in order to generate the signature:
+1. Concatenate headers, where each one separated by line terminator `\n` and each line has a **lower case** header name and value separated by colon: `{lower_case_header_name}:{header_value}`. Example: `date:2019-11-07T11:37:32.510Z\nx-mesh-nonce:4c97634c`
+1. Generate HMAC-SHA256 with message being the payload from above and the key is the *API SECRET*
+1. Base64 encode the result of the has method
 
 ### Timestamp
 
-* A valid time stamp is mandatory for authenticated requests and must be within 5 minutes of the API system time when the request is received.
-* replay attacks
-* clock scew
+A valid time stamp is mandatory for authenticated requests and must be within 5 minutes of the API system time when the request is received.
+
+The timestamp must be passed in `Date` field as described in [RFC](https://tools.ietf.org/html/rfc7231#section-7.1.1.2).
+
 ### Nonce
 
-* https://en.wikipedia.org/wiki/Cryptographic_nonce
-* reply attack
-* when to retry
+[Nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) identifies a unique request made to a specific API operation. One of the main purposes of the nonce is to prevent replay attacks and detect duplicate requests to API.
 
 ## Examples
 
-This repository contains an example in the following languages:
+This repository contains an examples on how perform authentication to Mesh API in the following languages:
 
 * [Postman](./postman)
 * [Python 3+](./python3)

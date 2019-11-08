@@ -46,15 +46,18 @@ Now every request that will be created in the collection will have headers that 
 To add a request you will normally:
 - <details>
     <summary>Click on add request</summary>
+
     ![](./assets/add_request.png)
 </details>
 
 - <details>
     <summary>Define request URL</summary>
+
     ![](./assets/request.png)
 </details>
 
 - <details>
     <summary>Execute request, which should return `200`</summary>
+    
     ![](./assets/request_sent.png)
 </details>

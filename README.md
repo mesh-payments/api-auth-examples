@@ -13,7 +13,7 @@ As an opposite to token based authentication, the signature is tied to the HTTP 
 
 In order to authenticate your request, the following HTTP request headers must be included:
 
-* `Date` - timestamp of request in format of [ISO-8601](http://en.wikipedia.org/wiki/ISO_8601). Example: `2019-11-07T11:37:32.510Z`. See [details](###Timestamp).
+* `Date` - time stamp of request in format of [ISO-8601](http://en.wikipedia.org/wiki/ISO_8601). Example: `2019-11-07T11:37:32.510Z`. See [details](###Timestamp).
 * `x-mesh-nonce` - unique identifier of the request that is sent to the API. See [details](#Nonce).
 * `Authorization` - composed of four components: an algorithm declaration (scheme), api key, list of header names that used in signature, and the calculated signature. All those components structured in format that described in the [next section](#constructing-authorization-header).
 
@@ -46,7 +46,7 @@ It consist of 2 parts separated by whitespace:
 So, in order to generate the signature:
 1. Concatenate headers, where each one separated by line terminator `\n` and each line has a **lower case** header name and value separated by colon: `{lower_case_header_name}:{header_value}`. Example: `date:2019-11-07T11:37:32.510Z\nx-mesh-nonce:4c97634c`
 1. Generate HMAC-SHA256 with message being the payload from above and the key is the *API SECRET*
-1. Base64 encode the result of the has method
+1. Encode the hash function result to base64 string
 
 ### Timestamp
 

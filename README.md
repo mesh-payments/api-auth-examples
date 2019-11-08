@@ -36,8 +36,8 @@ Like already shown above, the header has the following structure:
 HMAC-SHA256 Credential=;SignedHeaders=;Signature=
 ```
 
-Similar to many other `Authorization` headers it consist on 2 parts separated by whitespace:
-* `HMAC-SHA256` - scheme, which inidcates the type of authorization and which HASH algorithm used to generate signature. This is a constant value.
+It consist of 2 parts separated by whitespace:
+* `HMAC-SHA256` - scheme, which indicates the type of authorization and which HASH algorithm used to generate signature. This is a constant value.
 * `Credential=;SignedHeaders=;Signature=` - authorization parameters list, separated by semicolon. Parameters names are case insensitive and all 3 of them are required. 
   * `Credential` - your *API KEY*
   * `SignedHeaders` - a list of HTTP request headers names separated by comma, that used to construct the signature. Usually the value will be `Date,x-mesh-nonce`.

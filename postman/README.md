@@ -7,13 +7,17 @@ collection.
 Follow the steps for setup pre-request script:
 
 - Create a new collection 
+
 ![](./assets/create_collection.png)
 - Give it a name and open `Variables` tab
+
 ![](./assets/name_collection.png)
+
 - Add 3 new variables in `CURRENT VALUE` column (this will prevent synchronizing values to Postman cloud):
   - `HOST` - the base URL of the API (e.q. https://example.com)
   - `API_KEY` - the API key that was provided to you
   - `API_SECRET` - the API secret 
+
 - Now click on `Pre-request Scripts` tab and paste the code snippet below:
 ```js
 const uuid = require('uuid');

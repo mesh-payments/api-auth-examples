@@ -49,8 +49,5 @@ The signature itself contains all headers in the order they appear in `SignedHea
 
 This repository contains an example in the following languages:
 
-* [Node.js](./node.js) (JavaScript)
 * [Postman](./postman)
 * [Python 3+](./python3)
-* [.NET Core](./dotnet) (C#)
-* [Java](./java) 8+

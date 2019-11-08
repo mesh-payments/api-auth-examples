@@ -7,7 +7,7 @@ collection.
 Follow the steps for setup pre-request script:
 
 - Create a new collection 
-![](./assets/create_collection.png)
+![](./assets/create_collection.png | height=100)
 - Give it a name and open `Variables` tab
 ![](./assets/name_collection.png)
 - Add 3 new variables in `CURRENT VALUE` column (this will prevent synchronizing values to Postman cloud):

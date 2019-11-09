@@ -45,7 +45,7 @@ class MeshApi {
         final byte[] signature = mac.doFinal(payload.getBytes(CHARSET));
         final String signatureEncoded = Base64.getEncoder().encodeToString(signature);
 
-        // call API
+        // make API call
         final String auth = String.format("HMAC-SHA256 Credential=%s;SignedHeaders=Date,x-mesh-nonce;Signature=%s", key,
                 signatureEncoded);
         final HttpURLConnection connection = (HttpURLConnection) new URL(String.format("%s/status", host))
@@ -54,8 +54,9 @@ class MeshApi {
         connection.setRequestProperty("Authorization", auth);
         connection.setRequestProperty("Date", timestamp);
         connection.setRequestProperty("x-mesh-nonce", nonce);
-
         connection.connect();
+
+        // read response
         final int status = connection.getResponseCode();
         final String body = readResponse(status < 300 ? connection.getInputStream() : connection.getErrorStream());
         final String requestId = connection.getHeaderField("x-amzn-RequestId");

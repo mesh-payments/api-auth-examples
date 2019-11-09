@@ -29,9 +29,9 @@ const key = pm.variables.get('API_KEY');
 const secret = pm.variables.get('API_SECRET');
 
 // generate signature
-const signature = `date:${timestamp}\nx-mesh-nonce:${nonce}`;
-const signatureSigned = CryptoJS.HmacSHA256(signature, secret);
-const signatureEncoded = CryptoJS.enc.Base64.stringify(signatureSigned);
+const payload = `date:${timestamp}\nx-mesh-nonce:${nonce}`;
+const signature = CryptoJS.HmacSHA256(payload, secret);
+const signatureEncoded = CryptoJS.enc.Base64.stringify(signature);
 
 // append headers
 const auth = `HMAC-SHA256 Credential=${key};SignedHeaders=Date,x-mesh-nonce;Signature=${signatureEncoded}`;

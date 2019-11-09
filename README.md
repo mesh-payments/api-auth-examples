@@ -25,7 +25,7 @@ If the your language of your choice is not listed above, please follow instructi
 
 In order to authenticate your request, the following HTTP request headers must be included:
 
-* `Date` - time stamp of request in format of [ISO-8601](http://en.wikipedia.org/wiki/ISO_8601). Example: `2019-11-07T11:37:32.510Z`. See [details](###Timestamp).
+* `Date` - time stamp of request in format of [ISO-8601](http://en.wikipedia.org/wiki/ISO_8601). Example: `2019-11-07T11:37:32.510Z`. See [details](#Timestamp).
 * `x-mesh-nonce` - unique identifier of the request that is sent to the API. See [details](#Nonce).
 * `Authorization` - composed of four components: an algorithm declaration (scheme), api key, list of header names that used in signature, and the calculated signature. All those components structured in format that described in the [next section](#constructing-authorization-header).
 

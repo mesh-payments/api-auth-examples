@@ -37,13 +37,13 @@ namespace MeshApi
                 "HMAC-SHA256",
                 $"Credential={key};SignedHeaders=Date,x-mesh-nonce;Signature={signatureEncoded}");
             client.DefaultRequestHeaders.Date = timestamp;
-            client.DefaultRequestHeaders.Add("1x-mesh-nonce", nonce);
+            client.DefaultRequestHeaders.Add("x-mesh-nonce", nonce);
+            var response = await client.GetAsync($"{host}/status");
 
             // read response
-            var response = await client.GetAsync($"{host}/status");
-            var requestId = response.Headers.GetValues("x-amzn-RequestId").FirstOrDefault();
+            response.Headers.TryGetValues("x-amzn-RequestId", out var requestId);
             var body = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"Request ID [{requestId}] returned [{(int)response.StatusCode}]\n{body}\n");
+            Console.WriteLine($"Request ID [{requestId?.FirstOrDefault() ?? "NA"}] returned [{(int)response.StatusCode}]\n{body}\n");
         }
     }
 }

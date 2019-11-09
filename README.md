@@ -9,6 +9,17 @@ is provided in HTTP request matches, then the operation is allowed, otherwise th
 
 As an opposite to token based authentication, the signature is tied to the HTTP headers with unfixed values, thus makes impossible to reuse (reply) the signature for different requests.
 
+## Examples
+
+This repository contains an examples on how perform authentication to Mesh API in the following languages:
+
+* [Postman](./postman)
+* [Python 3+](./python3)
+* [Node.js 10+](./nodejs)
+* [Java 8+](./java)
+
+If the your language of your choice is not listed above, please follow instructions below on how to construct this type of request.
+
 ## Making Request
 
 In order to authenticate your request, the following HTTP request headers must be included:
@@ -58,11 +69,3 @@ The timestamp must be passed in `Date` field as described in [RFC](https://tools
 
 [Nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) identifies a unique request made to a specific API operation. One of the main purposes of the nonce is to prevent replay attacks and detect duplicate requests to API.
 
-## Examples
-
-This repository contains an examples on how perform authentication to Mesh API in the following languages:
-
-* [Postman](./postman)
-* [Python 3+](./python3)
-* [Node.js 10+](./nodejs)
-* [Java 8+](./java)

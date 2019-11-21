@@ -19,7 +19,7 @@ This repository contains an examples on how perform authentication to Mesh API i
 * [Java 8+](./java)
 * [.NET C#](./dotnet)
 
-If the your language of your choice is not listed above, please follow instructions below on how to construct this type of request.
+If your language of your choice is not listed above, please follow instructions below on how to construct this type of request.
 
 ## Making Request
 

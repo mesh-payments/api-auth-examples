@@ -1,13 +1,13 @@
 # Mesh API Reference
 
-This repository is a reference to Mesh API and consist of [Wiki](./wiki) and examlples of how to perform Authentication phase.
+This repository is a reference to Mesh API and consist of Wiki pages and examlples of how to perform Authentication phase.
 
 Please see [Wiki](./wiki) for how to consume APIs and what APIs are currently available.
 
 
 ## Examples
 
-This repository contains an examples on how perform authentication to Mesh API in the following languages:
+You can read in details [how to make authenticated](./wiki/Authentication) requests to API or use examples below as a reference:
 
 * [Postman](./postman)
 * [Python 3+](./python3)

@@ -6,7 +6,7 @@ Assuming that you have [.NET core](https://dotnet.microsoft.com/download) instal
 HOST={YOUR HOST} API_KEY={YOUR KEY} API_SECRET={YOUR SECRET} dotnet run
 ```
 
-If you on Windows, then run from Powershell:
+If you are using Windows, then run from Powershell:
 
 ```powershell
 $env:HOST = '{YOUR HOST}'; $env:API_KEY = '{YOUR KEY}'; $env:API_SECRET = '{YOUR SECRET}'; `

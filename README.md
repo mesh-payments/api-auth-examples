@@ -2,7 +2,7 @@
 
 This repository is a reference to Mesh API and consist of Wiki pages and examlples of how to perform Authentication phase.
 
-Please see [Wiki](https://github.com/mesh-payments/api-reference/wiki) for how to consume APIs and what APIs are currently available.
+Please see [Developers Portal](https://developers.meshpayments.com) for how to consume APIs and what APIs are currently available.
 
 
 ## Examples

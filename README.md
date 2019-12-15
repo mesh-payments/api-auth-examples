@@ -1,13 +1,13 @@
 # Mesh API Reference
 
-This repository is a reference to Mesh API and consist of Wiki pages and examlples of how to perform Authentication phase.
+This repository contains examples on various languages of how to perform authentication phase to MeshPayments API.
 
 Please see [Developers Portal](https://developers.meshpayments.com) for how to consume APIs and what APIs are currently available.
 
 
 ## Examples
 
-You can read in details [how to make authenticated](https://github.com/mesh-payments/api-reference/wiki/Authentication) requests to API or use examples below as a reference:
+You can read in details [how to make authenticated](https://developers.meshpayments.com/authentication) requests to API or use examples below as a reference:
 
 * [Postman](./postman)
 * [Python 3+](./python3)

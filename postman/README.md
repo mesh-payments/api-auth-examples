@@ -15,7 +15,7 @@ Follow the steps for setup pre-request script:
 
 - Add 3 new variables in `CURRENT VALUE` column (this will prevent synchronizing values to Postman cloud):
   - `HOST` - the [base URL of the API](https://developers.meshpayments.com/getting-started/#base-url)
-  - `API_KEY` - the [API key](https://github.com/mesh-payments/api-reference/wiki#getting-api-key)
+  - `API_KEY` - the [API key](https://developers.meshpayments.com/getting-started/#getting-api-key)
   - `API_SECRET` - the API secret 
 
 - Now click on `Pre-request Scripts` tab and paste the code snippet below:

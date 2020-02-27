@@ -14,7 +14,7 @@ Follow the steps for setup pre-request script:
 ![](./assets/name_collection.png)
 
 - Add 3 new variables in `CURRENT VALUE` column (this will prevent synchronizing values to Postman cloud):
-  - `HOST` - the [base URL of the API](https://github.com/mesh-payments/api-reference/wiki#base-url) (e.q. https://integrations.meshpayments.com)
+  - `HOST` - the [base URL of the API](https://developers.meshpayments.com/getting-started/#base-url)
   - `API_KEY` - the [API key](https://github.com/mesh-payments/api-reference/wiki#getting-api-key)
   - `API_SECRET` - the API secret 
 

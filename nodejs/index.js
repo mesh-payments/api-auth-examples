@@ -6,7 +6,7 @@ const axios = require('axios');
 const callApi = async (host, key, secret) => {
     // gather parameters
     const timestamp = new Date().toISOString();
-    const nonce = Math.floor(Math.random() * 5);
+    const nonce = Math.random() + '';
 
     // generate signature
     const payload = `date:${timestamp}\nx-mesh-nonce:${nonce}`;

@@ -25,7 +25,7 @@ const callApi = async (host, key, secret) => {
             }
         });
 
-    console.log(`Request ID [${response.headers['x-amzn-requestid']}] returned [${response.status}]\n`, response.data);
+    console.log(`Request ID [${response.headers['x-mesh-conversation-id']}] returned [${response.status}]\n`, response.data);
 };
 
 const host = process.env.HOST;

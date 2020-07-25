@@ -32,7 +32,7 @@ def call_api(host: str, key: str, secret: str):
             'x-mesh-nonce': nonce
         }
     )
-    requestId = response.headers['x-amzn-RequestId']
+    requestId = response.headers['x-mesh-conversation-id']
     print(
         f'Request ID [{requestId}] returned [{response.status_code}]\n{response.text}')
 

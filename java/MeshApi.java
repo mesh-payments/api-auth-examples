@@ -59,7 +59,7 @@ class MeshApi {
         // read response
         final int status = connection.getResponseCode();
         final String body = readResponse(status < 300 ? connection.getInputStream() : connection.getErrorStream());
-        final String requestId = connection.getHeaderField("x-amzn-RequestId");
+        final String requestId = connection.getHeaderField("x-mesh-conversation-id");
         connection.disconnect();
         System.out.printf("Request ID [%s] returned [%d]\n%s\n", requestId, status, body);
     }

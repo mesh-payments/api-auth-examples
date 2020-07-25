@@ -41,7 +41,7 @@ namespace MeshApi
             var response = await client.GetAsync($"{host}/status");
 
             // read response
-            response.Headers.TryGetValues("x-amzn-RequestId", out var requestId);
+            response.Headers.TryGetValues("x-mesh-conversation-id", out var requestId);
             var body = await response.Content.ReadAsStringAsync();
             Console.WriteLine($"Request ID [{requestId?.FirstOrDefault() ?? "NA"}] returned [{(int)response.StatusCode}]\n{body}\n");
         }

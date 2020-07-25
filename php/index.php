@@ -23,7 +23,6 @@ function call_api(string $host, string $key, string $secret)
         "HMAC-SHA256 Credential=%s;SignedHeaders=Date,x-mesh-nonce;Signature=%s",
         $key,
         $signatureEncoded);
-    echo $auth;
     $ch = curl_init($endpoint);
     curl_setopt($ch, CURLOPT_HTTPHEADER, array(
         "Authorization: " . $auth,

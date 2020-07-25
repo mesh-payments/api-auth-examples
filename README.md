@@ -14,5 +14,6 @@ You can read in details [how to make authenticated](https://developers.meshpayme
 * [Node.js 10+](./nodejs)
 * [Java 8+](./java)
 * [.NET C#](./dotnet)
+* [PHP](./php)
 
 

@@ -1,6 +1,5 @@
 <?php
 
-
 function call_api(string $host, string $key, string $secret) 
 {
     if(empty($host) || empty($key) || empty($secret)) {
@@ -49,9 +48,9 @@ function call_api(string $host, string $key, string $secret)
     $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
     $body = substr($response, $header_size);
+    curl_close($ch);
 
     echo sprintf("Request ID [%s] returned [%s] with body:\n%s", $conversation, $httpcode, $body);
-    curl_close($ch);
 }
 
 call_api(

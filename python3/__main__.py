@@ -10,7 +10,7 @@ import base64
 
 def call_api(host: str, key: str, secret: str):
     # gather params
-    timestamp = datetime.datetime.utcnow().replace(microsecond=0).isoformat()
+    timestamp = datetime.datetime.utcnow().replace(microsecond=0).isoformat() + 'Z'
     nonce = uuid.uuid4().hex
     print(f'Timestamp is {timestamp}, nonce is {nonce}')
 
